@@ -1,10 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-</head>
-<body>
-<h1>Hello World</h1>
+	<title>Agent List</title>
 
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Font -->
+	<link href='https://fonts.googleapis.com/css?family=Raleway+Dots' rel='stylesheet' type='text/css'>
+
+	<!-- Style -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- AngularJS -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+
+</head>
+<body ng-app="agentlistApp"  ng-controller="mainCtrl">
+
+	<div class="container">
+		<div class="row" align="center">
+			<h1>Agents</h1>
+		</div>
+		<br />
+	</div>
+
+
+	<div class="container" align="center" >
+		<div class="row">
+			<form >
+				<input class="form-control form-group" ng-model="agent.id" placeholder="Enter agent id ..." required></td>
+				<input class="form-control form-group" ng-model="agent.name" placeholder="Enter agent name ..." required></td>
+				<input class="form-control form-group" ng-model="agent.websiteLink" placeholder="Enter agent's website link ..." required></td>
+				<p class="pull-left clearfix">Portal Link&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp</p><a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q={{ agent.id }}" target="_blank" style="color: #e67e22;" class="pull-left">{{ agent.id }}</a><br />
+				<br />
+				<p class="pull-left clearfix">Website Link&nbsp&nbsp:&nbsp&nbsp</p><a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q={{ agent.websiteLink }}" target="_blank" style="color: #27ae60;" class="pull-left">{{ agent.websiteLink }}</a><br />
+				<label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">Option 4</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">Option 5</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">Option 6</label>
+				<br />
+				<br />
+				<div align="center" class="form-group">
+					<button type="submit" class="btn btn-primary">Add Agent</button></td>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Controller -->
+	<script type="text/javascript" src="js/controller.js"></script>
+
+	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>
