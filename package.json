@@ -1,0 +1,25 @@
+{
+  "name": "agentlist",
+  "version": "1.0.0",
+  "description": "A list of agents",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinvo1101/AgentList.git"
+  },
+  "author": "Tin Vo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tinvo1101/AgentList/issues"
+  },
+  "homepage": "https://github.com/tinvo1101/AgentList#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.6",
+    "morgan": "^1.7.0"
+  }
+}
