@@ -21,7 +21,7 @@
 
 	<div class="container">
 		<div class="row" align="center">
-			<h1>Agents</h1>
+			<h1>Add Agent</h1>
 		</div>
 		<br />
 	</div>
@@ -84,16 +84,65 @@
 					</div>
 				</div>
 			</div>
-		<div>
-
+		</div>
 	</div>
 
-	<!-- Scripts -->
 
-	<script>
+	<br />
+	<br />
 
-	</script>
-	
+	<div class="container-fluid">
+		<div class="row" align="center">
+			<h1>Agents</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-1 col-sm-0">
+			</div>
+			<div class="col-md-12 col-sm-12">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Agent ID</th>
+								<th>Agent Name</th>
+								<th>Have WWWW</th>
+								<th>On HomePage</th>
+								<th>Branded Banner</th>
+								<th>Above the Fold</th>
+								<th>On Facebook</th>
+								<th>Date Added</th>
+								<th>Date Modified</th>
+								<th>Portal Link</th>
+								<th>Valid SLug</th>
+								<th>Website Link</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr ng-repeat="agent in agentList">
+								<td>{{ agent.agentID 		}}</td>
+								<td>{{ agent.agentName  	}}</td>
+								<td>{{ agent.haveWWWW  		}}</td>
+								<td>{{ agent.onHomePage 	}}</td>
+								<td>{{ agent.brandedBanner  }}</td>
+								<td>{{ agent.aboveTheFold  	}}</td>
+								<td>{{ agent.onFacebook    	}}</td>
+								<td>{{ agent.dateAdded  	}}</td>
+								<td>{{ agent.dateModified   }}</td>
+								<td> <a href="{{ agent.portalLink }}" style="color:#d35400;">{{ agent.portalLink }}</a></td>
+								<td>{{ agent.validSlug      }}</td>
+								<td>{{ agent.websiteLink    }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-1 col-sm-12">
+			</div>
+		</div>
+	</div>
+
+	<!-- Scripts -->	
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

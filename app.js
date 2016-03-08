@@ -19,17 +19,21 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 
-// get '/' request handler
-app.get('/', function() {
-
+// get request handler
+app.get('/agents', function(req, res) {
+	Agent.find({}, function(err, data) {
+		if(err) {
+			console.log(err);
+			throw err;
+		}
+		res.json(data);
+	});
 });
 
 
 // post request handler
 app.post('/agents', function(req, res) {
-	
 	Agent.find({'agentID' : req.body.agentID }, function(err, data) {
-
 		if(err) {
 			console.log(err);
 			throw err;
@@ -57,6 +61,11 @@ app.listen(port, function() {
 	console.log('Listening on ' + port);
 });
 
+
+
+// NOTE: 
+// USE THIS: >db.mycol.find({},{"title":1,_id:0}).limit(1).skip(1)
+// to find the data in MongoDB 
 
 
 

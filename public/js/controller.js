@@ -17,8 +17,17 @@ function getCurrentDate() {
 
 app.controller('mainCtrl', function($scope, $http) {
 
+
+	// send GET request to the server
+	$http.get('/agents').success(function(res) {
+		$scope.agentList = res;
+	});
+
+
+
 	$scope.addAgent = function(req, res) {
 		var date = getCurrentDate();
+		console.log(date);
 		$scope.agent['dateAdded'] 		= date;
 		$scope.agent['dateModified'] 	= date;
 		$scope.agent['portalLink']		= 'https://' + $scope.agent.agentID + '.clutchinsurance.com/';
