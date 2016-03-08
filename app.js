@@ -1,7 +1,7 @@
 var express		= require('express');
 var mongoose	= require('mongoose');
 var morgan		= require('morgan');
-var Person		= require('./Agent.js');
+var Agent		= require('./Agent.js');
 var bodyParser	= require('body-parser');
 
 var app = express();
@@ -19,9 +19,21 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 
-// get '/'
+// get '/' request handler
 app.get('/', function() {
 
+});
+
+
+// post request handler
+app.post('/agents', function(req, res) {
+	var agent = new Agent(req.body);
+	agent.save(function(err, data) {
+		if(err) {
+			console.log(err);
+		}
+		res.json(data);
+	});
 });
 
 
