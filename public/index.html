@@ -70,9 +70,22 @@
 							<button type="submit" class="btn btn-primary">Add Agent</button></td>
 						</div>
 					</div>
+
 				</div>
 			</form>
 		</div>
+
+		<div class="row">
+			<div ng-if="invalid">
+				<div class="alert alert-warning alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<div align="center" style="color: #000;">
+						<strong>Oops!!! ID is already taken!!!</strong> 
+					</div>
+				</div>
+			</div>
+		<div>
+
 	</div>
 
 	<!-- Scripts -->

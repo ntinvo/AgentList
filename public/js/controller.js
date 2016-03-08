@@ -25,7 +25,15 @@ app.controller('mainCtrl', function($scope, $http) {
 
 		// send a post request to the server
 		$http.post('/agents', $scope.agent).success(function(res) {
-			console.log(res);
+			if(res == 'Id taken!!!') {
+				$scope.invalid = true;
+			} else {
+				$scope.invalid = false;
+			}
+
+			console.log($scope.invalid);
+
+
 		});
 	};
 

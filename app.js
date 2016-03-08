@@ -27,13 +27,28 @@ app.get('/', function() {
 
 // post request handler
 app.post('/agents', function(req, res) {
-	var agent = new Agent(req.body);
-	agent.save(function(err, data) {
+	
+	Agent.find({'agentID' : req.body.agentID }, function(err, data) {
+
 		if(err) {
 			console.log(err);
+			throw err;
 		}
-		res.json(data);
+
+		if(data.length == 0) {
+			var agent = new Agent(req.body);
+			agent.save(function(err, data) {
+				if(err) {
+					console.log(err);
+					throw err;
+				}
+				res.json(data);
+			});
+		} else {
+			res.json('Id taken!!!');
+		}
 	});
+	
 });
 
 
