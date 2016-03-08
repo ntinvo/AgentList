@@ -34,6 +34,7 @@ app.get('/agents', function(req, res) {
 // post request handler
 app.post('/agents', function(req, res) {
 	Agent.find({'agentID' : req.body.agentID }, function(err, data) {
+		console.log(req.body);
 		if(err) {
 			console.log(err);
 			throw err;

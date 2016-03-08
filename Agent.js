@@ -9,8 +9,8 @@ var AgentSchema = new Schema({
 	brandedBanner	: Boolean,
 	aboveTheFold	: Boolean,
 	onFacebook		: Boolean,
-	dateAdded		: Date,
-	dateModified	: Date,
+	dateAdded		: String,
+	dateModified	: String,
 	portalLink		: String,
 	validSlug		: Boolean,
 	websiteLink		: String

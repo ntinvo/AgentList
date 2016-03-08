@@ -11,7 +11,7 @@ function getCurrentDate() {
 	    date = '0' + date
 	if(month < 10)
 	    month = '0' + month
-	return month + '/' + date + '/' + year;
+	return String(month + '/' + date + '/' + year);
 }
 
 
@@ -20,6 +20,7 @@ app.controller('mainCtrl', function($scope, $http) {
 
 	// send GET request to the server
 	$http.get('/agents').success(function(res) {
+		console.log(res['dateAdded']);
 		$scope.agentList = res;
 	});
 
@@ -27,8 +28,7 @@ app.controller('mainCtrl', function($scope, $http) {
 
 	$scope.addAgent = function(req, res) {
 		var date = getCurrentDate();
-		console.log(date);
-		$scope.agent['dateAdded'] 		= date;
+		$scope.agent['dateAdded'] 		= date
 		$scope.agent['dateModified'] 	= date;
 		$scope.agent['portalLink']		= 'https://' + $scope.agent.agentID + '.clutchinsurance.com/';
 
