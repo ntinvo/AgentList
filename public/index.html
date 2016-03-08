@@ -17,7 +17,7 @@
 
 
 </head>
-<body ng-app="agentlistApp"  ng-controller="mainCtrl">
+<body ng-app="agentlistApp"  ng-controller="mainCtrl"  ng-init="agent.haveWWW=false; agent.onHomePage=false; agent.brandedBanner=false; agent.aboveTheFold=false; agent.onFacebook=false; agent.validSlug=false;">
 
 	<div class="container">
 		<div class="row" align="center">
@@ -29,13 +29,13 @@
 
 	<div class="container" align="center" >
 		<div class="row">
-			<form >
+			<form ng-submit="addAgent()">
 				<div class="container">
 					<div class="row">
-						<input class="form-control form-group" ng-model="agent.id" placeholder="Enter agent id ..." required></td>
-						<input class="form-control form-group" ng-model="agent.name" placeholder="Enter agent name ..." required></td>
+						<input class="form-control form-group" ng-model="agent.agentID" placeholder="Enter agent id ..." required></td>
+						<input class="form-control form-group" ng-model="agent.agentName" placeholder="Enter agent name ..." required></td>
 						<input class="form-control form-group" ng-model="agent.websiteLink" placeholder="Enter agent's website link ..." required></td>
-						<p class="pull-left clearfix">Portal Link&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp</p><a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q={{ agent.id }}" target="_blank" style="color: #e67e22;" class="pull-left">{{ agent.id }}</a><br />
+						<p class="pull-left clearfix">Portal Link&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp</p><a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q={{ agent.agentID }}" target="_blank" style="color: #e67e22;" class="pull-left">{{ agent.agentID }}</a><br />
 						<br />
 						<p class="pull-left clearfix">Website Link&nbsp&nbsp:&nbsp&nbsp</p><a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q={{ agent.websiteLink }}" target="_blank" style="color: #27ae60;" class="pull-left">{{ agent.websiteLink }}</a><br />
 						<br />
@@ -44,22 +44,22 @@
 					<div class="row">	
 						<div class="col-md-12" align="left">
 							<div class="col-md-2 col-sm-4 col-xm-6">
-								<label class="checkbox-inline"><input type="checkbox" value="">Have wwww</label>
+								<label class="checkbox-inline"><input type="checkbox" id="checkcheck" ng-model="agent.haveWWW">Have wwww</label>
 							</div>
 							<div class="col-md-2 col-sm-4 col-xm-6">
-								<label class="checkbox-inline"><input type="checkbox" value="">On homepage</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" ng-model="agent.onHomePage">On homepage</label>
 							</div>
 							<div class="col-md-2 col-sm-4 col-xm-6">
-								<label class="checkbox-inline"><input type="checkbox" value="">Branded Banner</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" ng-model="agent.brandedBanner">Branded Banner</label>
 							</div>
 							<div class="col-md-2 col-sm-4 col-xm-6">
-								<label class="checkbox-inline"><input type="checkbox" value="">Above the fold</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" ng-model="agent.aboveTheFold">Above the fold</label>
 							</div>
 							<div class="col-md-2 col-sm-4 col-xm-6">
-								<label class="checkbox-inline"><input type="checkbox" value="">On Facebook</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" ng-model="agent.onFacebook">On Facebook</label>
 							</div>
 							<div class="col-md-2 col-sm-4 col-xm-6">
-								<label class="checkbox-inline"><input type="checkbox" value="">Valid Slug</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" ng-model="agent.validSlug">Valid Slug</label>
 							</div>
 						</div>
 					</div>
@@ -75,9 +75,13 @@
 		</div>
 	</div>
 
-	<!-- Controller -->
-	<script type="text/javascript" src="js/controller.js"></script>
+	<!-- Scripts -->
 
+	<script>
+
+	</script>
+	
+	<script type="text/javascript" src="js/controller.js"></script>
 	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
