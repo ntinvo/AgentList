@@ -147,7 +147,7 @@
 						</thead>
 
 						<tbody>
-							<tr dir-paginate="agent in agentList | itemsPerPage:10 | filter:search">
+							<tr dir-paginate="agent in agentList | filter:search | itemsPerPage:10 ">
 								<td>{{ agent.agentID 		}}</td>
 								<td>{{ agent.agentName  	}}</td>
 								<td>{{ agent.haveWWW  		}}</td>
