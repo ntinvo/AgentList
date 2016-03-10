@@ -52,4 +52,12 @@ app.controller('mainCtrl', function($scope, $http) {
 		});	
 	};
 
+	// get agent info
+	$scope.getEditContact = function(_id) {
+		$http.get('/agents/' + _id).success(function(res) {
+			console.log(res);
+			$scope.agent = res;
+		});
+	};
+
 });

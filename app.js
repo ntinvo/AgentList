@@ -30,6 +30,16 @@ app.get('/agents', function(req, res) {
 	});
 });
 
+// get request w id handler
+app.get('/agents/:id', function(req, res) {
+	Agent.findOne({_id: req.params.id}, function(err, data) {
+		if(err) {
+			console.log(err);
+		}
+		res.json(data);
+	});
+});
+
 
 // post request handler
 app.post('/agents', function(req, res) {

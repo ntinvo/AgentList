@@ -3,6 +3,8 @@
 <head>
 	<title>Agent List</title>
 
+	<link rel="icon" type="image/ico" href="images/favicon.ico">
+
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -37,9 +39,9 @@
 						<input class="form-control form-group" ng-model="agent.agentID" placeholder="Enter agent id ..." required></td>
 						<input class="form-control form-group" ng-model="agent.agentName" placeholder="Enter agent name ..." required></td>
 						<input class="form-control form-group" ng-model="agent.websiteLink" placeholder="Enter agent's website link ..." required></td>
-						<p class="pull-left clearfix">Portal Link&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp</p><a href="https://{{ agent.agentID }}.clutchinsurance.com/" target="_blank" style="color: #e67e22;" class="pull-left">{{ agent.agentID }}</a><br />
+						<p class="pull-left clearfix">Portal Link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</p><a href="https://{{ agent.agentID }}.clutchinsurance.com/" target="_blank" style="color: #e67e22;" class="pull-left">{{ agent.agentID }}</a><br />
 						<br />
-						<p class="pull-left clearfix">Website Link&nbsp&nbsp:&nbsp&nbsp</p><a href="{{ agent.websiteLink }}" target="_blank" style="color: #27ae60;" class="pull-left">{{ agent.websiteLink }}</a><br />
+						<p class="pull-left clearfix">Website Link&nbsp;&nbsp;:&nbsp;&nbsp;</p><a href="//{{ agent.websiteLink }}" target="_blank" style="color: #27ae60;" class="pull-left">{{ agent.websiteLink }}</a><br />
 						<br />
 					</div>
 
@@ -155,10 +157,10 @@
 								<td>{{ agent.onFacebook    	}}</td>
 								<td>{{ agent.dateAdded  	}}</td>
 								<td>{{ agent.dateModified   }}</td>
-								<td><a href="{{ agent.portalLink  }}" style="color:#d35400;">{{ agent.portalLink  }}</a></td>
+								<td><a href="{{ agent.portalLink  }}" style="color:#e67e22;">{{ agent.portalLink  }}</a></td>
 								<td>{{ agent.validSlug      }}</td>
-								<td><a href="{{ agent.websiteLink }}" style="color:#2ecc71;">{{ agent.websiteLink }}</a></td>
-								<td><button class="btn btn-warning" data-toggle="modal" data-target="#addPersonModal" ng-click="getEditContact(person._id)">Edit</button></td>
+								<td><a href="//{{ agent.websiteLink }}" style="color:#2ecc71;" target="_blank">{{ agent.websiteLink }}</a></td>
+								<td><button class="btn btn-warning" data-toggle="modal" data-target="#addPersonModal" ng-click="getEditContact(agent._id)">Edit</button></td>
 								<td><button class="btn btn-danger" ng-click="deleteContact(agent._id)">Delete</button></td>
 							</tr>
 						</tbody>
@@ -171,6 +173,51 @@
 			</div>
 		</div>
 
+
+
+	 	<!-- Modal -->
+		<div class="modal fade" id="addPersonModal" tabindex="-1" rold="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<!-- HEADER -->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+	                       <strong><span aria-hidden="true">&times;</span></strong>
+	                       <span class="sr-only">Close</span>
+	                	</button>
+
+	                	<h4 class="modal-title" id="myModalLabel"><strong>Edit an Agent</strong></h4>
+					</div>
+
+					<!-- BODY -->
+					<div class="modal-body">
+						<form ng-submit="editContact(agent._id)">
+							<strong><input class="form-control form-group" ng-model="agent.agentID" required></strong>
+							<br />
+							<strong><input class="form-control form-group" ng-model="agent.agentName" required></strong>
+							<br />
+							<strong><input class="form-control form-group" ng-model="agent.websiteLink" required></strong>
+							<br />
+
+							<strong><p class="pull-left clearfix" style="color: #2c3e50;" >Portal Link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</p><a href="https://{{ agent.agentID }}.clutchinsurance.com/" target="_blank" style="color: #2c3e50;" class="pull-left">{{ agent.agentID }}</a></strong>
+							<br /><br />
+						
+							<strong><p class="pull-left clearfix" style="color: #2c3e50;">Website Link :&nbsp;&nbsp;&nbsp;</p><a href="//{{ agent.websiteLink }}" target="_blank" style="color: #2c3e50;" class="pull-left">{{ agent.websiteLink }}</a></strong>
+							<br /><br />
+
+							<div align="center" class="form-group">
+								<button type="submit" class="btn btn-success closeModal">Save Changes</button></td>
+							</div>
+						</form>
+					</div>
+
+				</div>
+				
+			</div>
+		</div>
+
+
 		<div class="row" align="center">
 			<dir-pagination-controls
 		    	max-size="5"
@@ -179,6 +226,9 @@
 		    </dir-pagination-controls>
 		</div>
 	</div>
+
+
+
 
 	<!-- Scripts -->
 	<script type="text/javascript" src="js/controller.js"></script>
