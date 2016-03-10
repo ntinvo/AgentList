@@ -3,7 +3,6 @@ var mongoose	= require('mongoose');
 var morgan		= require('morgan');
 var Agent		= require('./Agent.js');
 var bodyParser	= require('body-parser');
-var flash 		= require('connect-flash');
 
 var app = express();
 var port = process.env.PORT || 3000;
@@ -18,7 +17,6 @@ mongoose.connect('connected', function() {
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-app.use(flash());
 
 
 // get request handler
@@ -56,6 +54,18 @@ app.post('/agents', function(req, res) {
 		}
 	});
 	
+});
+
+
+// delete request handler
+app.delete('/agents/:id', function(req, res) {
+	Agent.remove({_id: req.params.id }, function(err) {
+		if(err) {
+			console.log(err);
+			throw err;
+		}
+		res.json("Deleted");
+	});
 });
 
 

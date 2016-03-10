@@ -18,7 +18,6 @@
   "homepage": "https://github.com/tinvo1101/AgentList#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "connect-flash": "^0.1.1",
     "express": "^4.13.4",
     "mongoose": "^4.4.6",
     "morgan": "^1.7.0"

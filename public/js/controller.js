@@ -23,8 +23,7 @@ app.controller('mainCtrl', function($scope, $http) {
 		$scope.agentList = res;
 	});
 
-
-
+	// add an agent
 	$scope.addAgent = function(req, res) {
 		var date = getCurrentDate();
 		$scope.agent['dateAdded'] 		= date
@@ -42,6 +41,15 @@ app.controller('mainCtrl', function($scope, $http) {
 				});
 			}
 		});
+	};
+
+	// delete an agent
+	$scope.deleteContact = function(_id) {
+		$http.delete('/agents/' + _id).success(function(res) {
+			$http.get('/agents').success(function(res) {
+				$scope.agentList = res;
+			});
+		});	
 	};
 
 });

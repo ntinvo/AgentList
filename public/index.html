@@ -46,7 +46,7 @@
 					<div class="row">	
 						<div class="col-md-12" align="left">
 							<div class="col-md-2 col-sm-4 col-xm-6">
-								<label class="checkbox-inline"><input type="checkbox" id="checkcheck" ng-model="agent.haveWWW">Have wwww</label>
+								<label class="checkbox-inline"><input type="checkbox" id="checkcheck" ng-model="agent.haveWWW">Have www</label>
 							</div>
 							<div class="col-md-2 col-sm-4 col-xm-6">
 								<label class="checkbox-inline"><input type="checkbox" value="" ng-model="agent.onHomePage">On homepage</label>
@@ -100,15 +100,11 @@
 		</div>
 	</div>
 
-
-
-	<br />
 	<br />
 
 	<div class="container-fluid">
 		<div class="row" align="center">
 			<h1>Agents</h1>
-			<br />
 		</div>
 
 		<div class="row" style="margin-left: 8px;" >
@@ -133,7 +129,7 @@
 							<tr>
 								<th>Agent ID</th>
 								<th>Agent Name</th>
-								<th>Have WWWW</th>
+								<th>Have WWW</th>
 								<th>On HomePage</th>
 								<th>Branded Banner</th>
 								<th>Above the Fold</th>
@@ -143,11 +139,13 @@
 								<th>Portal Link</th>
 								<th>Valid SLug</th>
 								<th>Website Link</th>
+								<th></th>
+								<th></th>
 							</tr>
 						</thead>
 
 						<tbody>
-							<tr dir-paginate="agent in agentList | filter:search | itemsPerPage:10 ">
+							<tr dir-paginate="agent in agentList | filter:search | itemsPerPage:8 ">
 								<td>{{ agent.agentID 		}}</td>
 								<td>{{ agent.agentName  	}}</td>
 								<td>{{ agent.haveWWW  		}}</td>
@@ -160,6 +158,8 @@
 								<td><a href="{{ agent.portalLink  }}" style="color:#d35400;">{{ agent.portalLink  }}</a></td>
 								<td>{{ agent.validSlug      }}</td>
 								<td><a href="{{ agent.websiteLink }}" style="color:#2ecc71;">{{ agent.websiteLink }}</a></td>
+								<td><button class="btn btn-warning" data-toggle="modal" data-target="#addPersonModal" ng-click="getEditContact(person._id)">Edit</button></td>
+								<td><button class="btn btn-danger" ng-click="deleteContact(agent._id)">Delete</button></td>
 							</tr>
 						</tbody>
 
@@ -184,8 +184,5 @@
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	
-
-
 </body>
 </html>
