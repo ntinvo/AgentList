@@ -1,4 +1,4 @@
-var app = angular.module('agentlistApp', []);
+var app = angular.module('agentlistApp', ['angularUtils.directives.dirPagination']);
 
 
 // get today's date

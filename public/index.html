@@ -16,6 +16,8 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 
+	<script src="js/dirPagination.js"></script>
+
 </head>
 <body ng-app="agentlistApp"  ng-controller="mainCtrl"  ng-init="agent.haveWWW=false; agent.onHomePage=false; agent.brandedBanner=false; agent.aboveTheFold=false; agent.onFacebook=false; agent.validSlug=false;">
 
@@ -145,7 +147,7 @@
 						</thead>
 
 						<tbody>
-							<tr ng-repeat="agent in agentList | filter:search">
+							<tr dir-paginate="agent in agentList | itemsPerPage:10 | filter:search">
 								<td>{{ agent.agentID 		}}</td>
 								<td>{{ agent.agentName  	}}</td>
 								<td>{{ agent.haveWWW  		}}</td>
@@ -160,23 +162,29 @@
 								<td><a href="{{ agent.websiteLink }}" style="color:#2ecc71;">{{ agent.websiteLink }}</a></td>
 							</tr>
 						</tbody>
-					</table>
+
+
+					</table>					
 				</div>
 			</div>
 			<div class="col-md-1 col-sm-12">
 			</div>
 		</div>
+
+		<div class="row" align="center">
+			<dir-pagination-controls
+		    	max-size="5"
+		    	direction-links="true"
+		    	boundary-links="true" >
+		    </dir-pagination-controls>
+		</div>
 	</div>
 
 	<!-- Scripts -->
-
-
-
-
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+	
 
 
 </body>
