@@ -108,6 +108,19 @@
 			<h1>Agents</h1>
 			<br />
 		</div>
+
+		<div class="row" style="margin-left: 8px;" >
+			<form class="form-inline">
+				<div class="form-group">
+					<label>Search&nbsp;&nbsp;</label>
+					<input type="text" ng-model="search" class="form-control"></input>
+				</div>
+			</form>
+			<br />
+			<br />
+		</div>
+
+
 		<div class="row">
 			<div class="col-md-1 col-sm-0">
 			</div>
@@ -132,7 +145,7 @@
 						</thead>
 
 						<tbody>
-							<tr ng-repeat="agent in agentList">
+							<tr ng-repeat="agent in agentList | filter:search">
 								<td>{{ agent.agentID 		}}</td>
 								<td>{{ agent.agentName  	}}</td>
 								<td>{{ agent.haveWWW  		}}</td>
