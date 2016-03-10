@@ -20,7 +20,6 @@ app.controller('mainCtrl', function($scope, $http) {
 
 	// send GET request to the server
 	$http.get('/agents').success(function(res) {
-		console.log(res['dateAdded']);
 		$scope.agentList = res;
 	});
 
@@ -38,18 +37,10 @@ app.controller('mainCtrl', function($scope, $http) {
 				$scope.invalid = true;
 			} else {
 				$scope.invalid = false;
+				$http.get('/agents').success(function(res) {
+					$scope.agentList = res;
+				});
 			}
-
-			console.log(res);
-
-
-			// send GET request to the server
-			$http.get('/agents').success(function(res) {
-				console.log(res['dateAdded']);
-				$scope.agentList = res;
-			});
-
-
 		});
 	};
 

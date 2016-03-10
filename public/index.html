@@ -75,17 +75,29 @@
 			</form>
 		</div>
 
+
+
+
 		<div class="row">
-			<div ng-if="invalid">
-				<div class="alert alert-warning alert-dismissible" role="alert">
+			<div ng-if="invalid==true">
+				<div class="alert alert-danger" id="myAlert">
+				<div align="center" style="color: #000;">
+						<strong>Oops!!! ID is already taken!!!</strong> 
+					</div>
+				</div>
+			</div>
+
+			<div ng-if="invalid==false">
+				<div class="alert alert-success alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<div align="center" style="color: #000;">
-						<strong>Oops!!! ID is already taken!!!</strong> 
+						<strong>Agent has been added!!!</strong> 
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 
 
 	<br />
@@ -94,6 +106,7 @@
 	<div class="container-fluid">
 		<div class="row" align="center">
 			<h1>Agents</h1>
+			<br />
 		</div>
 		<div class="row">
 			<div class="col-md-1 col-sm-0">
@@ -129,9 +142,9 @@
 								<td>{{ agent.onFacebook    	}}</td>
 								<td>{{ agent.dateAdded  	}}</td>
 								<td>{{ agent.dateModified   }}</td>
-								<td> <a href="{{ agent.portalLink }}" style="color:#d35400;">{{ agent.portalLink }}</a></td>
+								<td><a href="{{ agent.portalLink  }}" style="color:#d35400;">{{ agent.portalLink  }}</a></td>
 								<td>{{ agent.validSlug      }}</td>
-								<td>{{ agent.websiteLink    }}</td>
+								<td><a href="{{ agent.websiteLink }}" style="color:#2ecc71;">{{ agent.websiteLink }}</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -142,9 +155,16 @@
 		</div>
 	</div>
 
-	<!-- Scripts -->	
+	<!-- Scripts -->
+
+
+
+
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
 </body>
 </html>
