@@ -40,7 +40,14 @@ app.controller('mainCtrl', function($scope, $http) {
 				$scope.invalid = false;
 			}
 
-			console.log($scope.invalid);
+			console.log(res);
+
+
+			// send GET request to the server
+			$http.get('/agents').success(function(res) {
+				console.log(res['dateAdded']);
+				$scope.agentList = res;
+			});
 
 
 		});
