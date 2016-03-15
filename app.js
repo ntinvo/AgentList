@@ -79,6 +79,38 @@ app.delete('/agents/:id', function(req, res) {
 });
 
 
+// put request handler
+app.put('/agents/:id', function(req, res) {
+	Agent.findOne({_id: req.params.id}, function(err, data) {
+		if(err) {
+			console.log(err);
+			throw err;
+		}
+
+		data.haveWWW 		= req.body.haveWWW;
+		data.onHomePage 	= req.body.onHomePage;
+		data.brandedBanner 	= req.body.brandedBanner;
+		data.aboveTheFold 	= req.body.aboveTheFold;
+		data.onFacebook 	= req.body.onFacebook;
+		data.validSlug 		= req.body.validSlug; 
+		data.agentID 		= req.body.agentID;
+		data.agentName 		= req.body.agentName;
+		data.websiteLink 	= req.body.websiteLink; 
+		data.dateAdded 		= req.body.dateAdded;
+		data.dateModified 	= req.body.dateModified;
+		data.portalLink 	= req.body.portalLink; 
+
+		data.save(function(err) {
+			if(err) {
+				console.log(err);
+				throw err;
+			}
+			res.json(data);
+		});
+	});
+});
+
+
 // server is listenning
 app.listen(port, function() {
 	console.log('Listening on ' + port);

@@ -53,22 +53,27 @@ app.controller('mainCtrl', function($scope, $http) {
 	};
 
 	// get agent info
-	$scope.getEditContact = function(_id) {
+	$scope.getEditContact = function(_id, editAgent) {
 		$http.get('/agents/' + _id).success(function(res) {
-			console.log(res);
-			$scope.agent.agentIDEdit 		= res.agentID;
-			$scope.agent.agentNameEdit		= res.agentName;
-			$scope.agent.haveWWWEdit		= res.haveWWW;
-			$scope.agent.onHomePageEdit		= res.onHomePage;
-			$scope.agent.brandedBannerEdit	= res.brandedBanner;
-			$scope.agent.aboveTheFoldEdit	= res.aboveTheFold;
-			$scope.agent.onFacebookEdit		= res.onFacebook;
-			$scope.agent.dateAddedEdit		= res.dateAdded;
-			$scope.agent.dateModifiedEdit	= res.dateModified;
-			$scope.agent.portalLinkEdit		= res.portalLink;
-			$scope.agent.validSlugEdit		= res.validSlug;
-			$scope.agent.websiteLinkEdit	= res.websiteLink;
+			$scope.editAgent = res;
 		});
 	};
+
+
+	// edit an agent
+	$scope.editContact = function(_id) {
+		var date = getCurrentDate();
+		$scope.editAgent['dateModified'] = date;
+		$scope.editAgent['portalLink']		= 'https://' + $scope.editAgent.agentID + '.clutchinsurance.com/';
+
+		console.log($scope.editAgent);
+
+		// send a put request to the server
+		$http.put('/agents/' + _id, $scope.editAgent).success(function(res) {
+			$http.get('/agents').success(function(res) {
+				$scope.agentList = res;
+			});
+		})
+	}
 
 });
