@@ -71,7 +71,7 @@
 						<br />
 						<br />
 						<div align="center" class="form-group">
-							<button type="submit" class="btn btn-primary">Add Agent</button></td>
+							<button type="submit" class="btn btn-primary" id="addAgent">Add Agent</button></td>
 						</div>
 					</div>
 
@@ -79,13 +79,19 @@
 			</form>
 		</div>
 
+		<div class="row" id="alertView"></div>
 
 
-
-		<div class="row">
+		<!-- <div class="row">
 			<div ng-if="invalid==true">
 				<div class="alert alert-danger" id="myAlert">
-				<div align="center" style="color: #000;">
+					<button id="closeAlert1" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<script>
+						document.getElementById("closeAlert1").onclick = function () {
+							alert(1);
+						}
+					</script>
+					<div align="center" style="color: #000;">
 						<strong>Oops!!! ID is already taken!!!</strong> 
 					</div>
 				</div>
@@ -99,7 +105,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 
 	<br />
@@ -148,8 +154,8 @@
 
 						<tbody>
 							<tr dir-paginate="agent in agentList | filter:search | itemsPerPage:8 ">
-								<td>{{ agent.agentID 		}}</td>
-								<td>{{ agent.agentName  	}}</td>
+								<td style="color: #1abc9c;">{{ agent.agentID 		}}</td>
+								<td style="color: #f1c40f;">{{ agent.agentName  	}}</td>
 								<td>{{ agent.haveWWW  		}}</td>
 								<td>{{ agent.onHomePage 	}}</td>
 								<td>{{ agent.brandedBanner  }}</td>
@@ -265,6 +271,16 @@
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+<!-- 	<script>
+		$(document).ready(function() {
+			if ( invalid ) {
+					alert(1);
+				}	
+		});
+	</script> -->
+
 
 	<!-- Hide the modal when the save button is pressed -->
 	<script type="text/javascript">

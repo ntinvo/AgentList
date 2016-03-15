@@ -34,8 +34,27 @@ app.controller('mainCtrl', function($scope, $http) {
 		$http.post('/agents', $scope.agent).success(function(res) {
 			if(res == 'Id taken!!!') {
 				$scope.invalid = true;
+				$('#alertView').append('<div class="alert alert-danger myAlert"><button id="closeAlert1" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><div align="center" style="color: #000;"><strong>Oops!!! ID is already taken!!!</strong> </div></div>');
+				
+				$('#addAgent').click(function() {
+					$('.myAlert').remove();
+				});
+
+				$('#closeAlert1').click(function() {
+					$('.myAlert').remove();
+				});
 			} else {
 				$scope.invalid = false;
+				$('#alertView').append('<div class="alert alert-success alert-dismissible myAlert" role="alert"><button id="closeAlert2" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><div align="center" style="color: #000;"><strong>Agent has been added!!!</strong> </div></div>');
+
+				$('#addAgent').click(function() {
+					$('.myAlert').remove();
+				});
+
+				$('#closeAlert2').click(function() {
+					$('.myAlert').remove();
+				});
+
 				$http.get('/agents').success(function(res) {
 					$scope.agentList = res;
 				});
