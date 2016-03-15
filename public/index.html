@@ -193,18 +193,46 @@
 					<!-- BODY -->
 					<div class="modal-body">
 						<form ng-submit="editContact(agent._id)">
-							<strong><input class="form-control form-group" ng-model="agent.agentID" required></strong>
+							<strong><input class="form-control form-group" ng-model="agent.agentIDEdit" required></strong>
 							<br />
-							<strong><input class="form-control form-group" ng-model="agent.agentName" required></strong>
+							<strong><input class="form-control form-group" ng-model="agent.agentNameEdit" required></strong>
 							<br />
-							<strong><input class="form-control form-group" ng-model="agent.websiteLink" required></strong>
+							<strong><input class="form-control form-group" ng-model="agent.websiteLinkEdit" required></strong>
 							<br />
 
-							<strong><p class="pull-left clearfix" style="color: #2c3e50;" >Portal Link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</p><a href="https://{{ agent.agentID }}.clutchinsurance.com/" target="_blank" style="color: #2c3e50;" class="pull-left">{{ agent.agentID }}</a></strong>
+							<strong><p class="pull-left clearfix" style="color: #2c3e50;" >Portal Link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</p><a href="https://{{ agent.agentIDEdit }}.clutchinsurance.com/" target="_blank" style="color: #2c3e50;" class="pull-left">{{ agent.agentIDEdit }}</a></strong>
 							<br /><br />
 						
-							<strong><p class="pull-left clearfix" style="color: #2c3e50;">Website Link :&nbsp;&nbsp;&nbsp;</p><a href="//{{ agent.websiteLink }}" target="_blank" style="color: #2c3e50;" class="pull-left">{{ agent.websiteLink }}</a></strong>
+							<strong><p class="pull-left clearfix" style="color: #2c3e50;">Website Link :&nbsp;&nbsp;&nbsp;</p><a href="//{{ agent.websiteLinkEdit }}" target="_blank" style="color: #2c3e50;" class="pull-left">{{ agent.websiteLinkEdit }}</a></strong>
 							<br /><br />
+
+
+
+							<div class="row">	
+								<div class="col-md-12" align="left" style="color: #000;">
+									<div class="col-md-4 col-sm-4 col-xm-4">
+										<label class="checkbox-inline"><input type="checkbox" id="checkcheck" ng-model="agent.haveWWWEdit"><strong>Have www</strong></label>
+									</div>
+									<div class="col-md-4 col-sm-4 col-xm-4">
+										<label class="checkbox-inline"><input type="checkbox" value="" ng-model="agent.onHomePageEdit"><strong>On homepage</strong></label>
+									</div>
+									<div class="col-md-4 col-sm-4 col-xm-4">
+										<label class="checkbox-inline"><input type="checkbox" value="" ng-model="agent.brandedBannerEdit"><strong>Branded Banner</strong></label>
+									</div>
+									<div class="col-md-4 col-sm-4 col-xm-4">
+										<label class="checkbox-inline"><input type="checkbox" value="" ng-model="agent.aboveTheFoldEdit"><strong>Above the fold</strong></label>
+									</div>
+									<div class="col-md-4 col-sm-4 col-xm-4">
+										<label class="checkbox-inline"><input type="checkbox" value="" ng-model="agent.onFacebookEdit"><strong>On Facebook</strong></label>
+									</div>
+									<div class="col-md-4 col-sm-4 col-xm-4">
+										<label class="checkbox-inline"><input type="checkbox" value="" ng-model="agent.validSlugEdit"><strong>Valid Slug</strong></label>
+									</div>
+								</div>
+							</div>
+							<br /><br />
+
+
 
 							<div align="center" class="form-group">
 								<button type="submit" class="btn btn-success closeModal">Save Changes</button></td>

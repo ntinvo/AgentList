@@ -56,7 +56,18 @@ app.controller('mainCtrl', function($scope, $http) {
 	$scope.getEditContact = function(_id) {
 		$http.get('/agents/' + _id).success(function(res) {
 			console.log(res);
-			$scope.agent = res;
+			$scope.agent.agentIDEdit 		= res.agentID;
+			$scope.agent.agentNameEdit		= res.agentName;
+			$scope.agent.haveWWWEdit		= res.haveWWW;
+			$scope.agent.onHomePageEdit		= res.onHomePage;
+			$scope.agent.brandedBannerEdit	= res.brandedBanner;
+			$scope.agent.aboveTheFoldEdit	= res.aboveTheFold;
+			$scope.agent.onFacebookEdit		= res.onFacebook;
+			$scope.agent.dateAddedEdit		= res.dateAdded;
+			$scope.agent.dateModifiedEdit	= res.dateModified;
+			$scope.agent.portalLinkEdit		= res.portalLink;
+			$scope.agent.validSlugEdit		= res.validSlug;
+			$scope.agent.websiteLinkEdit	= res.websiteLink;
 		});
 	};
 
