@@ -17,7 +17,7 @@
 	<!-- AngularJS -->
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
-
+	<!-- Pagination -->
 	<script src="js/dirPagination.js"></script>
 
 </head>
@@ -205,13 +205,13 @@
 							<strong><input class="form-control form-group" ng-model="editAgent.agentName" required></strong>
 							<br />
 							<strong style="color: #000;"><h5>Agent Website Link</h5></strong>
-							<strong><input class="form-control form-group" ng-model="editAgent.websiteLink" required></strong>
+							<strong><input class="form-control form-group website-link-modal" ng-model="editAgent.websiteLink" required></strong>
 							<br />
 
 							<strong><p class="pull-left clearfix" style="color: #2c3e50;" >Portal Link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</p><a href="https://{{ editAgent.agentID }}.clutchinsurance.com/" target="_blank" style="color: #2c3e50;" class="pull-left">{{ editAgent.agentID }}</a></strong>
 							<br /><br />
 						
-							<strong><p class="pull-left clearfix" style="color: #2c3e50;">Website Link :&nbsp;&nbsp;&nbsp;</p><a href="//{{ editAgent.websiteLink }}" target="_blank" style="color: #2c3e50;" class="pull-left">{{ editAgent.websiteLink }}</a></strong>
+							<strong><p class="pull-left clearfix" style="color: #2c3e50;">Website Link :&nbsp;&nbsp;&nbsp;</p><a href="//{{ editAgent.websiteLink }}" target="_blank" style="color: #2c3e50;" class="pull-left wlink-modal">{{ editAgent.websiteLink }}</a></strong>
 							<br /><br />
 
 
@@ -281,8 +281,19 @@
 				} else if (lowerLink.includes("http")) {
 					$(".wlink").attr("href", lowerLink.substring(5));
 				} else {
+					alert(lowerLink);
 					$(".wlink").attr("href", "//" + lowerLink);
 				}
+			});
+
+			$(".website-link-modal").on("blur", function() {
+				var link = $(".wlink-modal").attr("href");
+				var lowerLink = link.toLowerCase();
+				if (lowerLink.includes("https")) {
+					$(".wlink-modal").attr("href", lowerLink.substring(8));
+				} else if (lowerLink.includes("http")) {
+					$(".wlink-modal").attr("href", lowerLink.substring(7));
+				} 
 			});
 		});
 	</script>

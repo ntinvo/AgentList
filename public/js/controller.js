@@ -30,6 +30,14 @@ app.controller('mainCtrl', function($scope, $http) {
 		$scope.agent['dateModified'] 	= date;
 		$scope.agent['portalLink']		= 'https://' + $scope.agent.agentID + '.clutchinsurance.com/';
 
+		// validate the link
+		var lowerLink = $scope.agent.websiteLink;
+		if (lowerLink.includes("https")) {
+			$scope.agent.websiteLink = lowerLink.substring(8);
+		} else if (lowerLink.includes("http")) {
+			$scope.agent.websiteLink = lowerLink.substring(7);
+		}
+
 		// send a post request to the server
 		$http.post('/agents', $scope.agent).success(function(res) {
 			if(res == 'Id taken!!!') {
@@ -85,7 +93,14 @@ app.controller('mainCtrl', function($scope, $http) {
 		$scope.editAgent['dateModified'] = date;
 		$scope.editAgent['portalLink']		= 'https://' + $scope.editAgent.agentID + '.clutchinsurance.com/';
 
-		console.log($scope.editAgent);
+
+		// validate the link
+		var lowerLink = $scope.editAgent.websiteLink;
+		if (lowerLink.includes("https")) {
+			$scope.editAgent.websiteLink = lowerLink.substring(8);
+		} else if (lowerLink.includes("http")) {
+			$scope.editAgent.websiteLink = lowerLink.substring(7);
+		}
 
 		// send a put request to the server
 		$http.put('/agents/' + _id, $scope.editAgent).success(function(res) {
