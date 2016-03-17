@@ -8,15 +8,15 @@ function getCurrentDate() {
 	var month 	= today.getMonth() + 1;
 	var year 	= today.getFullYear();
 	if(date < 10) 
-	    date = '0' + date
+		date = '0' + date
 	if(month < 10)
-	    month = '0' + month
+		month = '0' + month
 	return String(month + '/' + date + '/' + year);
 }
 
 
+// main app controller
 app.controller('mainCtrl', function($scope, $http) {
-
 
 	// send GET request to the server
 	$http.get('/agents').success(function(res) {
@@ -109,5 +109,4 @@ app.controller('mainCtrl', function($scope, $http) {
 			});
 		})
 	}
-
 });

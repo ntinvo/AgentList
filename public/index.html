@@ -23,6 +23,7 @@
 </head>
 <body ng-app="agentlistApp"  ng-controller="mainCtrl"  ng-init="agent.haveWWW=false; agent.onHomePage=false; agent.brandedBanner=false; agent.aboveTheFold=false; agent.onFacebook=false; agent.validSlug=false;">
 
+	<!-- Add agent header -->
 	<div class="container">
 		<div class="row" align="center">
 			<h1>Add Agent</h1>
@@ -30,22 +31,22 @@
 		<br />
 	</div>
 
-
+	<!-- Add agent form -->
 	<div class="container" align="center" >
 		<div class="row">
 			<form ng-submit="addAgent()">
 				<div class="container">
 					<div class="row">
-						<input class="form-control form-group" ng-model="agent.agentID" placeholder="Enter agent id ..." required></td>
-						<input class="form-control form-group" ng-model="agent.agentName" placeholder="Enter agent name ..." required></td>
-						<input class="form-control form-group website-link" ng-model="agent.websiteLink" placeholder="Enter agent's website link ..." required></td>
+						<strong><input class="form-control form-group" ng-model="agent.agentID" placeholder="Enter agent id ..." required></strong>
+						<strong><input class="form-control form-group" ng-model="agent.agentName" placeholder="Enter agent name ..." required></strong>
+						<strong><input class="form-control form-group website-link" ng-model="agent.websiteLink" placeholder="Enter agent's website link ..." required></strong>
 						<p class="pull-left clearfix">Portal Link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</p><a href="https://{{ agent.agentID }}.clutchinsurance.com/" target="_blank" style="color: #e67e22;" class="pull-left">{{ agent.agentID }}</a><br />
 						<br />
 						<p class="pull-left clearfix">Website Link&nbsp;&nbsp;:&nbsp;&nbsp;</p><a href="{{ agent.websiteLink }}" target="_blank" style="color: #27ae60;" class="pull-left wlink">{{ agent.websiteLink }}</a><br />
 						<br />
 					</div>
 
-					<div class="row">	
+					<div class="row">
 						<div class="col-md-12" align="left">
 							<div class="col-md-2 col-sm-4 col-xm-6">
 								<label class="checkbox-inline"><input type="checkbox" id="checkcheck" ng-model="agent.haveWWW">Have www</label>
@@ -79,36 +80,13 @@
 			</form>
 		</div>
 
+		<!-- Alertview for add/error -->
 		<div class="row" id="alertView"></div>
-
-
-		<!-- <div class="row">
-			<div ng-if="invalid==true">
-				<div class="alert alert-danger" id="myAlert">
-					<button id="closeAlert1" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<script>
-						document.getElementById("closeAlert1").onclick = function () {
-							alert(1);
-						}
-					</script>
-					<div align="center" style="color: #000;">
-						<strong>Oops!!! ID is already taken!!!</strong> 
-					</div>
-				</div>
-			</div>
-
-			<div ng-if="invalid==false">
-				<div class="alert alert-success alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<div align="center" style="color: #000;">
-						<strong>Agent has been added!!!</strong> 
-					</div>
-				</div>
-			</div>
-		</div> -->
 	</div>
 	<br />
 
+
+	<!-- Table view of agents -->
 	<div class="container-fluid">
 		<div class="row" align="center">
 			<h1>Agents</h1>
@@ -118,7 +96,7 @@
 			<form class="form-inline">
 				<div class="form-group">
 					<label>Search&nbsp;&nbsp;</label>
-					<input type="text" ng-model="search" class="form-control"></input>
+					<strong><input type="text" ng-model="search" class="form-control"></input></strong>
 				</div>
 			</form>
 			<br />
@@ -166,12 +144,10 @@
 								<td>{{ agent.validSlug      }}</td>
 								<td><a href="//{{ agent.websiteLink }}" style="color:#2ecc71;" target="_blank">{{ agent.websiteLink }}</a></td>
 								<td><button class="btn btn-warning" data-toggle="modal" data-target="#addPersonModal" ng-click="getEditContact(agent._id, editAgent)">Edit</button></td>
-								<td><button class="btn btn-danger" ng-click="deleteContact(agent._id)">Delete</button></td>
+								<td><button class="btn btn-danger" data-toggle="modal" data-target="#deletePersonModal" ng-click="deleteContact(agent._id)">Delete</button></td>
 							</tr>
 						</tbody>
-
-
-					</table>					
+					</table>
 				</div>
 			</div>
 			<div class="col-md-1 col-sm-12">
@@ -180,7 +156,7 @@
 
 
 
-	 	<!-- Modal -->
+		<!-- Modal for edit button -->
 		<div class="modal fade" id="addPersonModal" tabindex="-1" rold="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -188,11 +164,10 @@
 					<!-- HEADER -->
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">
-	                       <strong><span aria-hidden="true">&times;</span></strong>
-	                       <span class="sr-only">Close</span>
-	                	</button>
-
-	                	<h4 class="modal-title" id="myModalLabel"><strong>Edit an Agent</strong></h4>
+							<strong><span aria-hidden="true">&times;</span></strong>
+							<span class="sr-only">Close</span>
+							</button>
+							<h4 class="modal-title" id="myModalLabel"><strong>Edit an Agent</strong></h4>
 					</div>
 
 					<!-- BODY -->
@@ -207,14 +182,10 @@
 							<strong style="color: #000;"><h5>Agent Website Link</h5></strong>
 							<strong><input class="form-control form-group website-link-modal" ng-model="editAgent.websiteLink" required></strong>
 							<br />
-
 							<strong><p class="pull-left clearfix" style="color: #2c3e50;" >Portal Link&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</p><a href="https://{{ editAgent.agentID }}.clutchinsurance.com/" target="_blank" style="color: #2c3e50;" class="pull-left">{{ editAgent.agentID }}</a></strong>
 							<br /><br />
-						
 							<strong><p class="pull-left clearfix" style="color: #2c3e50;">Website Link :&nbsp;&nbsp;&nbsp;</p><a href="//{{ editAgent.websiteLink }}" target="_blank" style="color: #2c3e50;" class="pull-left wlink-modal">{{ editAgent.websiteLink }}</a></strong>
 							<br /><br />
-
-
 
 							<div class="row">	
 								<div class="col-md-12" align="left" style="color: #000;">
@@ -240,30 +211,56 @@
 							</div>
 							<br /><br />
 
-
-
 							<div align="center" class="form-group">
 								<button type="submit" class="btn btn-success closeModal">Save Changes</button></td>
 							</div>
 						</form>
 					</div>
-
 				</div>
-				
 			</div>
 		</div>
 
 
+
+
+		<!-- Modal for delete button -->
+		<div class="modal fade" id="deletePersonModal" tabindex="-1" rold="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<!-- HEADER -->
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<strong><span aria-hidden="true">&times;</span></strong>
+							<span class="sr-only">Close</span>
+							</button>
+							<h4 class="modal-title" id="myModalLabel"><strong>Delete an Agent</strong></h4>
+					</div>
+
+					<!-- BODY -->
+					<div class="modal-body">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+		<!-- Pagination -->
 		<div class="row" align="center">
 			<dir-pagination-controls
-		    	max-size="5"
-		    	direction-links="true"
-		    	boundary-links="true" >
-		    </dir-pagination-controls>
+				max-size="5"
+				direction-links="true"
+				boundary-links="true" >
+			</dir-pagination-controls>
 		</div>
 	</div>
-
-
 
 
 	<!-- Scripts -->
@@ -271,6 +268,7 @@
 	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+	<!-- Validate links -->
 	<script>
 		$(document).ready(function() {
 			$(".website-link").on("blur", function() {
@@ -281,7 +279,6 @@
 				} else if (lowerLink.includes("http")) {
 					$(".wlink").attr("href", lowerLink.substring(5));
 				} else {
-					alert(lowerLink);
 					$(".wlink").attr("href", "//" + lowerLink);
 				}
 			});

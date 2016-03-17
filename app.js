@@ -35,6 +35,7 @@ app.get('/agents/:id', function(req, res) {
 	Agent.findOne({_id: req.params.id}, function(err, data) {
 		if(err) {
 			console.log(err);
+			throw err;
 		}
 		res.json(data);
 	});
@@ -44,7 +45,6 @@ app.get('/agents/:id', function(req, res) {
 // post request handler
 app.post('/agents', function(req, res) {
 	Agent.find({'agentID' : req.body.agentID }, function(err, data) {
-		console.log(req.body);
 		if(err) {
 			console.log(err);
 			throw err;
@@ -115,33 +115,3 @@ app.put('/agents/:id', function(req, res) {
 app.listen(port, function() {
 	console.log('Listening on ' + port);
 });
-
-
-
-// NOTE: 
-// USE THIS: >db.mycol.find({},{"title":1,_id:0}).limit(1).skip(1)
-// to find the data in MongoDB 
-
-
-
-// console.log("HERE");
-// 	var Person = new Person({
-// 		agentID			: "123",
-// 		agentName		: "Sample",
-// 		haveWWW			: true,
-// 		onHomePage		: true,
-// 		brandedBanner	: true,
-// 		aboveTheFold	: true,
-// 		onFacebook		: true,
-// 		dateAdded		: Date(),
-// 		dateModified	: Date(),
-// 		portalLink		: "123",
-// 		validSlug		: true,
-// 		websiteLink		: "123.com"
-// 	});
-// 	Person.save(function(err, data) {
-// 		if(err) {
-// 			console.log(err);
-// 		}
-// 		console.log("Saved");
-// 	});
